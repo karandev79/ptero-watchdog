@@ -2,9 +2,16 @@
     "scanDirectory": "/var/lib/pterodactyl/volumes",
     "scanInterval": 300000,
     "suspiciousFiles": [
-        ".env",
-        "bash",
-        "miner",
-        "xmrig"
-    ]
+        "xmrig",
+        "kinsing",
+        "kdevtmpfsi",
+        ".app_worker",
+        "cloudflared",
+        "tunnel",
+        "rxlcvf",
+        "webnhjfx"
+    ],
+      "targetPath": [
+    "*/worlds/config.json"
+  ]
 }
