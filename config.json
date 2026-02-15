@@ -1,7 +1,10 @@
 {
-    "scandirectory": "/var/lib/pterodactyl/volumes",
-    "scaninterval": 300000,
-    "suspiciousfiles": [
-        ".env", "bash", "miner", "xmrig"
+    "scanDirectory": "/var/lib/pterodactyl/volumes",
+    "scanInterval": 300000,
+    "suspiciousFiles": [
+        ".env",
+        "bash",
+        "miner",
+        "xmrig"
     ]
 }

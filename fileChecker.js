@@ -1,6 +1,5 @@
 const fs = require("fs");
 const path = require("path");
-const { Suspense } = require("react");
 
 const config = JSON.parse(
     fs.readFileSync("./config.json", "utf-8") 
@@ -53,22 +52,22 @@ function checkFile(fileName, fullPath, finding){
         const baseDir = config.scanDirectory;
 
         if (!fs.existsSync(baseDir)) {
-            console.log('Scan directory not found...');
+            console.log(`Scan directory not found: ${baseDir}`);
             return;
         }
 
-        console.log('scanning directory...');
+        console.log('Scanning Directory...');
 
         const results = scanDirectoryRecursive(baseDir, []);
 
         if (results.length == 0) {
-            console.log("No suspicious files found...");
+            console.log("No Suspicious Files Found...");
             return;
         }
 
-        console.log("suspicious files detected!!!!")
+        console.log("Suspicious Files Detected!!!!")
         for (const res of results) {
-            console.log(`file info: \n file: ${res.file} \n file path: ${res.path} \n detected file: ${res.matched}`);
+            console.log(`File Info: \n File: ${res.file} \n File Path: ${res.path} \n Detected File: ${res.matched}`);
         }
     }
 
