@@ -26,5 +26,6 @@
     "./server",
     "usr",
     "runsv"
-  ]
+  ],
+  "discordWebhook": "https://discord.com/api/webhooks/"
 }

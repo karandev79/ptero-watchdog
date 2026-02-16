@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const seenDetections = new Set();
+const { sendWebhook } = require("./webhook");
 
 const config = JSON.parse(
     fs.readFileSync("./config.json", "utf-8")
@@ -93,7 +94,14 @@ function runFileCheck() {    // checker runner
         seenDetections.add(res.path);
         newDetections++;
 
-        console.log(`File Info: \n File: ${res.file} \n File Path: ${res.path} \n Detected File: ${res.matched}`);
+        // discord webhook logger
+        const message = `Suspicious Files Detected:   
+        File: ${res.file}
+        Path: ${res.path}
+        Match: ${res.matched}`;
+
+        console.log(message);
+        sendWebhook(message);
     }
 
     if (newDetections === 0) {

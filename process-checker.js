@@ -1,5 +1,6 @@
 const { execSync } = require("child_process");
 const fs = require("fs");
+const { sendWebhook } = require("./webhook");
 
 const config = JSON.parse(
     fs.readFileSync("./config.json", "utf-8") // load config filee
@@ -43,10 +44,13 @@ function runProcessScan() {  // process scanner with keywords to detect from con
             const pid = parts[0] || "unknown";
             const user = parts[1] || "unknown";
 
-            console.log("Suspicious Process Detected!!!!");
-            console.log(`PID: ${pid}`);
-            console.log(`Command: ${line.trim()}`);
-            console.log(`Matched Keywords: ${keyword}`);
+            const message = `Suspicious Process Detected
+            PID: ${pid} 
+            Command: ${line.trim()}
+            Matched Keywords: ${keyword}`;
+
+            console.log(message);
+            sendWebhook(message);
         }
     }
 }
