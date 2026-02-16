@@ -6,7 +6,7 @@ const config = JSON.parse(
     fs.readFileSync("./config.json", "utf-8")
 );
 
-function scanDirectoryRecursive(dir, finding = []) {
+function scanDirectoryRecursive(dir, finding = []) { // scan files and paths
     if (!fs.existsSync(dir)) return finding;
 
     let files;
@@ -43,7 +43,7 @@ function scanDirectoryRecursive(dir, finding = []) {
     return finding;
 }
 
-function checkFile(fileName, fullPath, finding) {
+function checkFile(fileName, fullPath, finding) { // selected files checker listed in config file.
     const lowerName = fileName.toLowerCase();
 
     for (const suspicious of config.suspiciousFiles) {
@@ -70,7 +70,7 @@ function matchTargetPatterns(fullPath) {
     return null;
 }
 
-function runFileCheck() {
+function runFileCheck() {    // checker runner
     const baseDir = config.scanDirectory;
 
     if (!fs.existsSync(baseDir)) {
@@ -78,26 +78,29 @@ function runFileCheck() {
         return;
     }
 
-    console.log('Scanning Directory...');
+    // console.log('Scanning Directory...');
 
     const results = [...new Map(
         scanDirectoryRecursive(baseDir, []).map(item => [item.path, item])
     ).values()];
 
 
-    if (results.length === 0) {
-        console.log("No Suspicious Files Found...");
-        return;
-    }
+    let newDetections = 0;
 
-    console.log("Suspicious Files Detected!!!!")
     for (const res of results) {
         if (seenDetections.has(res.path)) continue;
 
         seenDetections.add(res.path);
+        newDetections++;
 
         console.log(`File Info: \n File: ${res.file} \n File Path: ${res.path} \n Detected File: ${res.matched}`);
     }
+
+    if (newDetections === 0) {
+        return;
+    }
+
+    console.log(`New Suspicious Files Detected: ${newDetections}`);
 }
 
 module.exports = { runFileCheck };

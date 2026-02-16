@@ -1,17 +1,30 @@
 {
-    "scanDirectory": "/var/lib/pterodactyl/volumes",
-    "scanInterval": 300000,
-    "suspiciousFiles": [
-        "xmrig",
-        "kinsing",
-        "kdevtmpfsi",
-        ".app_worker",
-        "cloudflared",
-        "tunnel",
-        "rxlcvf",
-        "webnhjfx"
-    ],
-      "targetPath": [
+  "scanDirectory": "/var/lib/pterodactyl/volumes",
+  "scanInterval": 300000,
+  "suspiciousFiles": [
+    "xmrig",
+    "kinsing",
+    "kdevtmpfsi",
+    ".app_worker",
+    "cloudflared",
+    "tunnel",
+    "rxlcvf",
+    "webnhjfx"
+  ],
+  "targetPath": [
     "*/worlds/config.json"
+  ],
+  "processKeywords": [
+    "xmrig",
+    "miner",
+    "kinsing",
+    "kdevtmpfsi",
+    "tunnel",
+    "cloudflared",
+    "rxlcvf",
+    "bin",
+    "./server",
+    "usr",
+    "runsv"
   ]
 }
