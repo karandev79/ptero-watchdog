@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const fs = require("fs");
 const { runFileCheck } = require("./file-checker");
 const { runProcessScan } = require("./process-checker");
@@ -14,6 +15,6 @@ runProcessScan();
 // proccess running intervals
 setInterval(() => {
     runFileCheck();
-}, config.setInterval);
+}, config.scanInterval);
 
 setInterval(runProcessScan, 300000);
