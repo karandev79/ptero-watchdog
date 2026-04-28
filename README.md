@@ -1,6 +1,6 @@
 # Ptero Watchdog
 
-A detecting system for miners, tunnels, xmrig, and more with double detecting methods of file checking for file names and process checking for checking suspicious process incase of file detection fail or filed deleted but process running.
+A detecting system for miners, tunnels, xmrig, and more with double detecting methods of file checking for file names and process checking for checking suspicious process incase of file detection fail or files deleted but process running.
 
 ## Installation Guide:
 
